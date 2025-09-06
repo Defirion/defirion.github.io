@@ -48,7 +48,11 @@ linkedin_username: karim-romani
 # about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, I’m Karim Romani, a <mark>customer support and content operations</mark> professional <mark>transitioning into cybersecurity</mark>, driven by real‑world troubleshooting and a curiosity for how systems fail and recover. Outside work, <mark>salsa and bachata</mark> keep me on the dance floor, while <mark>gaming</mark> and constant learning fuel experiments with new tools and ideas. Over the years, helping friends with IT issues, spinning up gaming servers for friends, and exploring <mark>Linux</mark> taught the value of <mark>clean configs</mark>, clear documentation, and a <mark>security‑first mindset</mark>. That hands‑on path naturally evolved into pursuing security, where habits like <mark>systematic debugging</mark>, <mark>runbooks</mark>, and proactive risk thinking map well to analyst and SOC workflows. I’m actively building a practical foundation while shipping small projects—like an <mark>AI‑assisted Spotify Playlist Mixer</mark> used when <mark>DJing Latin socials</mark>—to keep skills applied and real. Let’s connect if there’s a challenge worth securing or a story to share from the dance floor to the command line.
+  Hi, I’m Karim Romani — a customer support and content operations professional <mark>transitioning into cybersecurity</mark>, driven by hands‑on troubleshooting and curiosity for how systems fail and recover. Outside work, <mark>salsa and bachata</mark> keep me on the dance floor; gaming and continuous learning fuel experiments with new tools and ideas.
+
+  Helping friends with IT, spinning up gaming servers, and exploring Linux taught me the value of clear documentation and a <mark>security‑first mindset</mark>. That practical path led me to pursue security, where habits like <mark>systematic debugging</mark> and runbooks map well to analyst and SOC workflows.
+
+  I keep skills applied by shipping small, useful projects — for example, an <mark>algorithm‑assisted Spotify Playlist Mixer</mark> I use when DJing Latin socials — which doubles as both a workflow helper and an experiment in AI‑assisted development. Let’s connect if there’s a challenge to secure or a story to share from the dance floor to the command line.
 
 content:
   - title: Projects # Title for the section
@@ -70,9 +74,9 @@ content:
         description: | # this will include new lines to allow paragraphs
           <mark>Spotify Playlist Mixer</mark> — I built a small, personal utility to speed up building and organizing <mark>dance‑friendly playlists</mark> I actually use when <mark>DJing salsa and bachata socials</mark>, so sets come together fast and feel good on the floor.
 
-          It lets me pull from saved playlists, try combinations quickly, and save a fresh playlist for each session—more a practical <mark>workflow helper</mark> than a public “product”.
+          It lets me pull from saved playlists, try combinations quickly, and save a fresh playlist for each session—more a practical <mark>workflow helper</mark> than a public “product”. The mixer is <mark>algorithm‑assisted</mark> (tempo/key/energy heuristics), not an autonomous AI DJ.
 
-          I prototyped with AI assistants (<mark>Copilot/Kiro</mark>) to iterate faster, and I keep refining it as part of ongoing learning and experimentation.
+          I prototyped parts of the workflow with AI assistants (<mark>Copilot/Kiro</mark>) to iterate faster, and I keep refining it as part of ongoing learning and experimentation.
 
   - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
