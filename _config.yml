@@ -68,11 +68,11 @@ content:
         quote: >
           This is probably one of the greatest apps ever created, if you don't agree you're probably wrong.
         description: | # this will include new lines to allow paragraphs
-          <mark>Spotify Playlist Mixer</mark> is a small, personal utility I built to explore what's possible when combining modern <mark>AI tools</mark> with real-world APIs.
+          <mark>Spotify Playlist Mixer</mark> — I built a small, personal utility to speed up building and organizing <mark>dance‑friendly playlists</mark> I actually use when <mark>DJing salsa and bachata socials</mark>, so sets come together fast and feel good on the floor.
 
-          I used <mark>GitHub Copilot</mark> and <mark>Kiro</mark> to prototype and accelerate development — the app helps me quickly assemble playlists and smooth transitions for <mark>bachata and salsa</mark> parties I DJ for fun. It focuses on creating dance-friendly flows by grouping tracks by <mark>tempo</mark>, <mark>key</mark>, and <mark>energy</mark> so sets feel natural and keep people on the floor.
+          It lets me pull from saved playlists, try combinations quickly, and save a fresh playlist for each session—more a practical <mark>workflow helper</mark> than a public “product”.
 
-          The project is intentionally lightweight and experimental: it doubles as a <mark>playground for AI-assisted coding</mark> and a practical tool I actually use. Source, ideas, and improvements live in the repository linked above.
+          I prototyped with AI assistants (<mark>Copilot/Kiro</mark>) to iterate faster, and I keep refining it as part of ongoing learning and experimentation.
 
   - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
