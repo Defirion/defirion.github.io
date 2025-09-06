@@ -52,7 +52,7 @@ about_content: | # this will include new lines to allow paragraphs
 
   Helping friends with IT, spinning up gaming servers, and exploring Linux taught me the value of clear documentation and a <mark>security‑first mindset</mark>. That practical path led me to pursue security, where habits like <mark>systematic debugging</mark> and runbooks map well to analyst and SOC workflows.
 
-  I keep skills applied by shipping small, useful projects — for example, an <mark>algorithm‑assisted Spotify Playlist Mixer</mark> I use when DJing Latin socials — which doubles as both a workflow helper and an experiment in AI‑assisted development. Let’s connect if there’s a challenge to secure or a story to share from the dance floor to the command line.
+  I keep skills applied by shipping small, useful projects: for example, an <mark>algorithm‑assisted Spotify Playlist Mixer</mark> I use when DJing Latin socials — which doubles as both a workflow helper and an experiment in AI‑assisted development. Let’s connect if there’s a challenge to secure or a story to share from the dance floor to the command line.
 
 content:
   - title: Projects # Title for the section
@@ -150,17 +150,17 @@ content:
           
           Though studies concluded after two years, the experience delivered durable skills and perspective that carried forward into later roles and projects
 
-  - title: A Little More About Me
-    layout: text
-    content: | # this will include new lines to allow paragraphs
-      Alongside my interests in networks and software engineering some of my other interests and hobbies are:
-      - Rock climbing
-      - Gaming
-      - Knitting
-      - [Becoming a ninja](https://www.youtube.com/watch?v=vtg4o__aRMg)
-
-      Look at this cool image  
-      ![Trees](/modern-resume-theme/images/landscape-trees.jpg "Trees")
+  # - title: A Little More About Me
+  #   layout: text
+  #   content: | # this will include new lines to allow paragraphs
+  #     Alongside my interests in networks and software engineering some of my other interests and hobbies are:
+  #     - Rock climbing
+  #     - Gaming
+  #     - Knitting
+  #     - [Becoming a ninja](https://www.youtube.com/watch?v=vtg4o__aRMg)
+  #
+  #     Look at this cool image  
+  #     ![Trees](/modern-resume-theme/images/landscape-trees.jpg "Trees")
 
 # Footer
 footer_show_references: true
