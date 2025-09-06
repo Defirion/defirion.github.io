@@ -48,9 +48,7 @@ linkedin_username: karim-romani
 # about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, my name's Brett and I'm a senior network system administrator. As well as administrating systems I also have experience making software and web apps. I have worked at a number of companies gaining teamwork and leadership skills.
-
-  I am most skilled in: <mark>AWS</mark> and <mark>Eating Pizza</mark>
+  Hi, I’m Karim Romani, a <mark>customer support and content operations</mark> professional <mark>transitioning into cybersecurity</mark>, driven by real‑world troubleshooting and a curiosity for how systems fail and recover. Outside work, <mark>salsa and bachata</mark> keep me on the dance floor, while <mark>gaming</mark> and constant learning fuel experiments with new tools and ideas. Over the years, helping friends with IT issues, spinning up gaming servers for friends, and exploring <mark>Linux</mark> taught the value of <mark>clean configs</mark>, clear documentation, and a <mark>security‑first mindset</mark>. That hands‑on path naturally evolved into pursuing security, where habits like <mark>systematic debugging</mark>, <mark>runbooks</mark>, and proactive risk thinking map well to analyst and SOC workflows. I’m actively building a practical foundation while shipping small projects—like an <mark>AI‑assisted Spotify Playlist Mixer</mark> used when <mark>DJing Latin socials</mark>—to keep skills applied and real. Let’s connect if there’s a challenge worth securing or a story to share from the dance floor to the command line.
 
 content:
   - title: Projects # Title for the section
@@ -70,11 +68,11 @@ content:
         quote: >
           This is probably one of the greatest apps ever created, if you don't agree you're probably wrong.
         description: | # this will include new lines to allow paragraphs
-          Spotify Playlist Mixer is a small, personal utility I built to explore what's possible when combining modern AI tools with real-world APIs.
+          <mark>Spotify Playlist Mixer</mark> is a small, personal utility I built to explore what's possible when combining modern <mark>AI tools</mark> with real-world APIs.
 
-          I used GitHub Copilot and Kiro to prototype and accelerate development — the app helps me quickly assemble playlists and smooth transitions for bachata and salsa parties I DJ for fun. It focuses on creating dance-friendly flows by grouping tracks by tempo, key, and energy so sets feel natural and keep people on the floor.
+          I used <mark>GitHub Copilot</mark> and <mark>Kiro</mark> to prototype and accelerate development — the app helps me quickly assemble playlists and smooth transitions for <mark>bachata and salsa</mark> parties I DJ for fun. It focuses on creating dance-friendly flows by grouping tracks by <mark>tempo</mark>, <mark>key</mark>, and <mark>energy</mark> so sets feel natural and keep people on the floor.
 
-          The project is intentionally lightweight and experimental: it doubles as a playground for AI-assisted coding and a practical tool I actually use. Source, ideas, and improvements live in the repository linked above.
+          The project is intentionally lightweight and experimental: it doubles as a <mark>playground for AI-assisted coding</mark> and a practical tool I actually use. Source, ideas, and improvements live in the repository linked above.
 
   - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
