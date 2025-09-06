@@ -57,28 +57,32 @@ content:
     layout: list # Type of content section (list/text)
     content:
       - layout: top-middle
-        title: Super awesome project
-        link: github.com/sproogen
+        title: Spotify Playlist Mixer
+        link: github.com/Defirion/
         # link_text: Project Website
         additional_links:
-          - title:  sproogen/modern-resume-theme
+          - title:  Defirion/spotify-playlist-mixer
             icon: fab fa-github
-            url: github.com/sproogen/modern-resume-theme
+            url: github.com/Defirion/spotify-playlist-mixer
           # - title:  Github page for project (eg. sproogen/modern-resume-theme)
           #   icon: fab fa-github
           #   url: Link to project (eg. sproogen.github.io/modern-resume-theme)
         quote: >
           This is probably one of the greatest apps ever created, if you don't agree you're probably wrong.
         description: | # this will include new lines to allow paragraphs
-          I started this project as a way if learning <mark>React</mark> and it has since grown into a fully fledged app. I have learned many skills through this and been I'm very proud of having this in my portfolio. If you don't have a project as awesome as this I would advise you make one.
+          Spotify Playlist Mixer is a small, personal utility I built to explore what's possible when combining modern AI tools with real-world APIs.
+
+          I used GitHub Copilot and Kiro to prototype and accelerate development — the app helps me quickly assemble playlists and smooth transitions for bachata and salsa parties I DJ for fun. It focuses on creating dance-friendly flows by grouping tracks by tempo, key, and energy so sets feel natural and keep people on the floor.
+
+          The project is intentionally lightweight and experimental: it doubles as a playground for AI-assisted coding and a practical tool I actually use. Source, ideas, and improvements live in the repository linked above.
 
   - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
     content:
       - layout: left
-        title: Teleperformance (NDA client)
-        sub_title: Customer Service Specialist – SaaS Productivity Platform Support
-        caption: Feb 2025 - Present · Greece · Remote
+        title: Teleperformance
+        sub_title: Customer Service Specialist – SaaS Productivity Platform Support (NDA client)
+        caption: Feb 2025 - Present · Athens, Attiki, Greece · Remote
         description: | # this will include new lines to allow paragraphs
           Resolved SaaS account access and workspace issues (provisioning, permissions, MFA), and guided users on best practices.
 
@@ -100,7 +104,7 @@ content:
       - layout: left
         title: Teleperformance
         sub_title: Customer Service Specialist – Banking Support (Contract, NDA client)
-        caption: Oct 2021 - Jan 2022 · Greece
+        caption: Oct 2021 - Jan 2022 · Athens, Attiki, Greece · Remote
         description: | # this will include new lines to allow paragraphs
           Supported retail banking users via secure channels; resolved access and account‑servicing inquiries within SLA and compliance guidelines.
 
@@ -111,7 +115,7 @@ content:
       - layout: left
         title: Teleperformance
         sub_title: Customer Service Specialist – Gaming Platform Support (NDA client)
-        caption: Sep 2018 - Sep 2021 · Athens, Attiki, Greece
+        caption: Sep 2018 - Sep 2021 · Athens, Attiki, Greece · Remote since for 2020-2021
         description: | # this will include new lines to allow paragraphs
           Supported end users via email, consistently exceeding satisfaction and resolution‑time targets.
 
