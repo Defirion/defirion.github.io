@@ -60,15 +60,12 @@ content:
     content:
       - layout: top-middle
         title: Spotify Playlist Mixer
-        link: github.com/Defirion/
+        link: github.com/Defirion/spotify-playlist-mixer
         # link_text: Project Website
         additional_links:
           - title:  Defirion/spotify-playlist-mixer
             icon: fab fa-github
             url: github.com/Defirion/spotify-playlist-mixer
-          - title: Project docs (checklist & guides)
-            icon: fas fa-book
-            url: https://github.com/Defirion/personal-site-docs
           # - title:  Github page for project (eg. sproogen/modern-resume-theme)
           #   icon: fab fa-github
           #   url: Link to project (eg. sproogen.github.io/modern-resume-theme)
@@ -83,7 +80,7 @@ content:
 
       - layout: top-middle
         title: Personal Site Docs
-        link: https://github.com/Defirion/personal-site-docs
+        link: https://github.com/Defirion/personal-site-docs    
         additional_links:
           - title: Repo (personal-site-docs)
             icon: fab fa-github
