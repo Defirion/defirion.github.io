@@ -48,11 +48,11 @@ linkedin_username: karim-romani
 # about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, I’m Karim Romani — a customer support and content operations professional <mark>transitioning into cybersecurity</mark>, driven by hands‑on troubleshooting and curiosity for how systems fail and recover. Outside work, <mark>salsa and bachata</mark> keep me on the dance floor; gaming and continuous learning fuel experiments with new tools and ideas.
+  Hi, I’m Karim Romani — a customer support and content operations professional **transitioning into cybersecurity**, driven by hands‑on troubleshooting and curiosity for how systems fail and recover. Outside work, **salsa and bachata** keep me on the dance floor; gaming and continuous learning fuel experiments with new tools and ideas.
 
-  Helping friends with IT, spinning up gaming servers, and exploring Linux taught me the value of clear documentation and a <mark>security‑first mindset</mark>. That practical path led me to pursue security, where habits like <mark>systematic debugging</mark> and runbooks map well to analyst and SOC workflows.
+  Helping friends with IT, spinning up gaming servers, and exploring Linux taught me the value of clear documentation and a **security‑first mindset**. That practical path led me to pursue security, where habits like **systematic debugging** and runbooks map well to analyst and SOC workflows.
 
-  I keep skills applied by shipping small, useful projects: for example, an <mark>algorithm‑assisted Spotify Playlist Mixer</mark> I use when DJing Latin socials — which doubles as both a workflow helper and an experiment in AI‑assisted development. Let’s connect if there’s a challenge to secure or a story to share from the dance floor to the command line.
+  I keep skills applied by shipping small, useful projects: for example, an **algorithm‑assisted Spotify Playlist Mixer** I use when DJing Latin socials — which doubles as both a workflow helper and an experiment in AI‑assisted development. Let’s connect if there’s a challenge to secure or a story to share from the dance floor to the command line.
 
 content:
   - title: Projects # Title for the section
@@ -72,11 +72,11 @@ content:
         quote: >
           This is probably one of the greatest apps ever created, if you don't agree you're probably wrong.
         description: | # this will include new lines to allow paragraphs
-          <mark>Spotify Playlist Mixer</mark> — I built a small, personal utility to speed up building and organizing <mark>dance‑friendly playlists</mark> I actually use when <mark>DJing salsa and bachata socials</mark>, so sets come together fast and feel good on the floor.
+          **Spotify Playlist Mixer** — I built a small, personal utility to speed up building and organizing **dance‑friendly playlists** I actually use when **DJing salsa and bachata socials**, so sets come together fast and feel good on the floor.
 
-          It lets me pull from saved playlists, try combinations quickly, and save a fresh playlist for each session—more a practical <mark>workflow helper</mark> than a public “product”. The mixer is <mark>algorithm‑assisted</mark> (tempo/key/energy heuristics), not an autonomous AI DJ.
+          It lets me pull from saved playlists, try combinations quickly, and save a fresh playlist for each session—more a practical **workflow helper** than a public “product”. The mixer is **algorithm‑assisted** (tempo/key/energy heuristics), not an autonomous AI DJ.
 
-          I prototyped parts of the workflow with AI assistants (<mark>Copilot/Kiro</mark>) to iterate faster, and I keep refining it as part of ongoing learning and experimentation.
+          I prototyped parts of the workflow with AI assistants (**Copilot/Kiro**) to iterate faster, and I keep refining it as part of ongoing learning and experimentation.
 
       - layout: top-middle
         title: Personal Site Docs
@@ -91,7 +91,7 @@ content:
         quote: >
           Personal Brand Website & Email Setup — documentation and a phased checklist for hosting a personal brand site on GitHub Pages and configuring email with Zoho Mail.
         description: | # concise conversational description
-          Personal Site Docs — a companion repo with a phased checklist and short guides for hosting a budget-friendly personal site (Spaceship, GitHub Pages) and email (Zoho Mail). The checklist combines practical setup steps with security controls: enable 2FA and admin hardening, enforce least-privilege roles, configure DNS and email auth (SPF/DKIM/DMARC), and verify HTTPS and DNS propagation. See the repo for the full step-by-step checklist and troubleshooting notes.
+          Personal Site Docs — a companion repo with a phased checklist and short guides for hosting a budget-friendly personal site (Spaceship, GitHub Pages) and email (Zoho Mail). The checklist combines practical setup steps with security controls: enable **2FA** and admin hardening, enforce **least-privilege** roles, configure DNS and email auth (**SPF/DKIM/DMARC**), and verify **HTTPS** and DNS propagation. See the repo for the full step-by-step checklist and troubleshooting notes.
 
   - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
