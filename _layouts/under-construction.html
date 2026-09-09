@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#080909">
+    <meta name="description" content="{{ page.description | escape }}">
+    <link rel="icon" href="{{ '/images/favicon.ico' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/under-construction.css' | relative_url }}">
+    <title>{{ page.title | escape }}</title>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <div class="page-shell">
+      <header class="site-header" aria-label="Site header">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="Karim Romani, back to top">
+          <span>karim</span><span>romani.</span>
+        </a>
+        <p class="header-status"><span class="status-mark" aria-hidden="true"></span> Rebuilding the site</p>
+      </header>
+
+      <main id="main" tabindex="-1">
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <h1 id="page-title">A new version<br>is taking <em>shape.</em></h1>
+            <p class="hero-lede">A clearer home for my projects, work and GRC.</p>
+            <div class="hero-actions">
+              <a class="primary-action" href="mailto:kr@karimromani.com">Get in touch <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <figure class="signal-figure" aria-labelledby="signal-title signal-description">
+            <svg viewBox="0 0 560 560" role="img" aria-labelledby="signal-title signal-description">
+              <title id="signal-title">An abstract system being rebuilt</title>
+              <desc id="signal-description">A lime core sits inside a set of open orbital lines, with a small lavender square marking a new point of connection.</desc>
+              <defs>
+                <pattern id="signal-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+                  <path d="M18 0H0V18" fill="none" stroke="#263027" stroke-width="1" />
+                </pattern>
+                <radialGradient id="signal-glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0" stop-color="#c1f48d" stop-opacity=".17" />
+                  <stop offset="1" stop-color="#c1f48d" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <circle cx="280" cy="280" r="242" fill="url(#signal-grid)" opacity=".55" />
+              <circle cx="280" cy="280" r="210" fill="url(#signal-glow)" />
+              <ellipse cx="280" cy="280" rx="205" ry="103" fill="none" stroke="#526252" stroke-width="1" transform="rotate(-29 280 280)" />
+              <ellipse cx="280" cy="280" rx="205" ry="103" fill="none" stroke="#526252" stroke-width="1" transform="rotate(48 280 280)" />
+              <circle cx="280" cy="280" r="116" fill="none" stroke="#82947b" stroke-width="1" stroke-dasharray="3 9" />
+              <circle cx="280" cy="280" r="64" fill="#c1f48d" opacity=".92" />
+              <circle cx="280" cy="280" r="44" fill="#111510" />
+              <path d="M262 280h36M280 262v36" stroke="#c1f48d" stroke-width="3" />
+              <path d="M280 70V25M280 535v-45M70 280H25M535 280h-45" stroke="#82947b" stroke-width="1" />
+              <path d="M126 126l-22-22M434 434l22 22" stroke="#82947b" stroke-width="1" />
+              <rect x="424" y="92" width="26" height="26" fill="#b7a3ef" transform="rotate(18 437 105)" />
+              <circle cx="119" cy="413" r="8" fill="#b2d8ef" />
+            </svg>
+          </figure>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>Karim Romani</span>
+        <nav aria-label="Social links">
+          <a href="https://github.com/Defirion">GitHub</a>
+          <a href="https://www.linkedin.com/in/karim-romani/">LinkedIn</a>
+          <a href="https://www.instagram.com/karim__rom/">Instagram</a>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>
