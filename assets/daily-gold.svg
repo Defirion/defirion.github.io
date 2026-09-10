@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="chart-wide" viewBox="0 0 1080 338" role="img" aria-labelledby="daily-gold-title daily-gold-desc">
+<title id="daily-gold-title">Daily change in recorded gold holdings</title><desc id="daily-gold-desc">Gold change between consecutive observed UTC days. Gold includes wallets and the warband bank. Missing comparisons have hollow marks. Balance changes include spending and transfers.</desc><style>svg{background:#080909;font-family:Segoe UI,Arial,sans-serif}
+.chart-grid{stroke:#514631;stroke-dasharray:3 7;fill:none}.chart-axis{fill:#a2a6a2;font-size:15px}
+.chart-path{stroke:#e6c582;stroke-width:3;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.chart-point,.chart-positive{fill:#e6c582}.chart-negative{fill:#b9a5d2}.chart-gap{stroke:#a2a6a2;stroke-width:2;fill:none}
+.chart-zero{stroke:#a2a6a2;fill:none}.chart-fill{fill:#e6c582;opacity:.055}</style>
+<path class="chart-grid" d="M80 283.00H1045"/>
+<text x="64" y="288.00" text-anchor="end" class="chart-axis">-500k</text>
+<path class="chart-grid" d="M80 221.00H1045"/>
+<text x="64" y="226.00" text-anchor="end" class="chart-axis">-250k</text>
+<path class="chart-zero" d="M80 159.00H1045"/>
+<text x="64" y="164.00" text-anchor="end" class="chart-axis">0</text>
+<path class="chart-grid" d="M80 97.00H1045"/>
+<text x="64" y="102.00" text-anchor="end" class="chart-axis">250k</text>
+<path class="chart-grid" d="M80 35.00H1045"/>
+<text x="64" y="40.00" text-anchor="end" class="chart-axis">500k</text>
+<text x="80" y="20" class="chart-axis">gold / day</text>
+<circle class="chart-gap" cx="80.00" cy="159.00" r="4"><title>2026-08-11: no comparable observation</title></circle>
+<circle class="chart-gap" cx="113.28" cy="159.00" r="4"><title>2026-08-12: no comparable observation</title></circle>
+<circle class="chart-gap" cx="146.55" cy="159.00" r="4"><title>2026-08-13: no comparable observation</title></circle>
+<rect class="chart-positive" x="172.83" y="159.00" width="14" height="0.80" rx="1"><title>2026-08-14: +3 gold</title></rect>
+<rect class="chart-positive" x="206.10" y="157.14" width="14" height="1.86" rx="1"><title>2026-08-15: +7,502 gold</title></rect>
+<rect class="chart-positive" x="239.38" y="157.95" width="14" height="1.05" rx="1"><title>2026-08-16: +4,244 gold</title></rect>
+<circle class="chart-gap" cx="279.66" cy="159.00" r="4"><title>2026-08-17: no comparable observation</title></circle>
+<circle class="chart-gap" cx="312.93" cy="159.00" r="4"><title>2026-08-18: no comparable observation</title></circle>
+<rect class="chart-positive" x="339.21" y="105.61" width="14" height="53.39" rx="1"><title>2026-08-19: +215,282 gold</title></rect>
+<rect class="chart-positive" x="372.48" y="134.89" width="14" height="24.11" rx="1"><title>2026-08-20: +97,213 gold</title></rect>
+<rect class="chart-positive" x="405.76" y="130.94" width="14" height="28.06" rx="1"><title>2026-08-21: +113,143 gold</title></rect>
+<rect class="chart-positive" x="439.03" y="100.44" width="14" height="58.56" rx="1"><title>2026-08-22: +236,145 gold</title></rect>
+<rect class="chart-positive" x="472.31" y="95.23" width="14" height="63.77" rx="1"><title>2026-08-23: +257,148 gold</title></rect>
+<rect class="chart-negative" x="505.59" y="159.00" width="14" height="0.99" rx="1"><title>2026-08-24: -3,986 gold</title></rect>
+<rect class="chart-positive" x="538.86" y="143.23" width="14" height="15.77" rx="1"><title>2026-08-25: +63,608 gold</title></rect>
+<rect class="chart-positive" x="572.14" y="97.62" width="14" height="61.38" rx="1"><title>2026-08-26: +247,503 gold</title></rect>
+<rect class="chart-positive" x="605.41" y="77.67" width="14" height="81.33" rx="1"><title>2026-08-27: +327,930 gold</title></rect>
+<rect class="chart-positive" x="638.69" y="141.73" width="14" height="17.27" rx="1"><title>2026-08-28: +69,640 gold</title></rect>
+<rect class="chart-positive" x="671.97" y="48.14" width="14" height="110.86" rx="1"><title>2026-08-29: +447,006 gold</title></rect>
+<rect class="chart-positive" x="705.24" y="95.05" width="14" height="63.95" rx="1"><title>2026-08-30: +257,853 gold</title></rect>
+<rect class="chart-negative" x="738.52" y="159.00" width="14" height="36.07" rx="1"><title>2026-08-31: -145,462 gold</title></rect>
+<rect class="chart-positive" x="771.79" y="105.92" width="14" height="53.08" rx="1"><title>2026-09-01: +214,033 gold</title></rect>
+<rect class="chart-positive" x="805.07" y="137.48" width="14" height="21.52" rx="1"><title>2026-09-02: +86,789 gold</title></rect>
+<rect class="chart-positive" x="838.34" y="137.61" width="14" height="21.39" rx="1"><title>2026-09-03: +86,249 gold</title></rect>
+<rect class="chart-positive" x="871.62" y="127.47" width="14" height="31.53" rx="1"><title>2026-09-04: +127,119 gold</title></rect>
+<rect class="chart-negative" x="904.90" y="159.00" width="14" height="7.88" rx="1"><title>2026-09-05: -31,776 gold</title></rect>
+<circle class="chart-gap" cx="945.17" cy="159.00" r="4"><title>2026-09-06: no comparable observation</title></circle>
+<circle class="chart-gap" cx="978.45" cy="159.00" r="4"><title>2026-09-07: no comparable observation</title></circle>
+<rect class="chart-positive" x="1004.72" y="136.00" width="14" height="23.00" rx="1"><title>2026-09-08: +92,742 gold</title></rect>
+<rect class="chart-positive" x="1038.00" y="102.05" width="14" height="56.95" rx="1"><title>2026-09-09: +229,654 gold</title></rect>
+<text x="80.00" y="319" text-anchor="start" class="chart-axis">11 Aug</text>
+<text x="312.93" y="319" text-anchor="middle" class="chart-axis">18 Aug</text>
+<text x="545.86" y="319" text-anchor="middle" class="chart-axis">25 Aug</text>
+<text x="778.79" y="319" text-anchor="middle" class="chart-axis">1 Sep</text>
+<text x="1045.00" y="319" text-anchor="end" class="chart-axis">9 Sep</text>
+</svg>

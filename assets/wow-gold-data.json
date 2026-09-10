@@ -1,0 +1,318 @@
+{
+  "as_of_utc": "2026-09-10",
+  "units": "gold",
+  "launch_utc": "2026-03-02T23:00:00+00:00",
+  "launch_source": "https://news.blizzard.com/en-gb/article/24243639/world-of-warcraft-midnighttm-goes-live-2-march",
+  "source": "wow-companion gold_log: TSM history, addon and Syndicator observations",
+  "method": "Last-known wallet per normalised account/character key plus newest warband-bank observation. No live correction. Missing observations stay null; daily deltas require consecutive observed UTC dates.",
+  "launch": [
+    {
+      "day_number": 0,
+      "period_end_utc": "2026-03-02T23:00:00Z",
+      "gold": 3013000.0,
+      "observed": true
+    },
+    {
+      "day_number": 1,
+      "period_end_utc": "2026-03-03T23:00:00Z",
+      "gold": 3551000.0,
+      "observed": true
+    },
+    {
+      "day_number": 2,
+      "period_end_utc": "2026-03-04T23:00:00Z",
+      "gold": 2425000.0,
+      "observed": true
+    },
+    {
+      "day_number": 3,
+      "period_end_utc": "2026-03-05T23:00:00Z",
+      "gold": 3013000.0,
+      "observed": true
+    },
+    {
+      "day_number": 4,
+      "period_end_utc": "2026-03-06T23:00:00Z",
+      "gold": 3024000.0,
+      "observed": true
+    },
+    {
+      "day_number": 5,
+      "period_end_utc": "2026-03-07T23:00:00Z",
+      "gold": 4332000.0,
+      "observed": true
+    },
+    {
+      "day_number": 6,
+      "period_end_utc": "2026-03-08T23:00:00Z",
+      "gold": 4904000.0,
+      "observed": true
+    },
+    {
+      "day_number": 7,
+      "period_end_utc": "2026-03-09T23:00:00Z",
+      "gold": 3921000.0,
+      "observed": true
+    },
+    {
+      "day_number": 8,
+      "period_end_utc": "2026-03-10T23:00:00Z",
+      "gold": 3968000.0,
+      "observed": true
+    },
+    {
+      "day_number": 9,
+      "period_end_utc": "2026-03-11T23:00:00Z",
+      "gold": 6250000.0,
+      "observed": true
+    },
+    {
+      "day_number": 10,
+      "period_end_utc": "2026-03-12T23:00:00Z",
+      "gold": 7049000.0,
+      "observed": true
+    },
+    {
+      "day_number": 11,
+      "period_end_utc": "2026-03-13T23:00:00Z",
+      "gold": 7926000.0,
+      "observed": true
+    },
+    {
+      "day_number": 12,
+      "period_end_utc": "2026-03-14T23:00:00Z",
+      "gold": 9560000.0,
+      "observed": true
+    },
+    {
+      "day_number": 13,
+      "period_end_utc": "2026-03-15T23:00:00Z",
+      "gold": 7545000.0,
+      "observed": true
+    },
+    {
+      "day_number": 14,
+      "period_end_utc": "2026-03-16T23:00:00Z",
+      "gold": 10094000.0,
+      "observed": true
+    },
+    {
+      "day_number": 15,
+      "period_end_utc": "2026-03-17T23:00:00Z",
+      "gold": 9762000.0,
+      "observed": true
+    },
+    {
+      "day_number": 16,
+      "period_end_utc": "2026-03-18T23:00:00Z",
+      "gold": 11077000.0,
+      "observed": true
+    },
+    {
+      "day_number": 17,
+      "period_end_utc": "2026-03-19T23:00:00Z",
+      "gold": 12768000.0,
+      "observed": true
+    },
+    {
+      "day_number": 18,
+      "period_end_utc": "2026-03-20T23:00:00Z",
+      "gold": 13663000.0,
+      "observed": true
+    },
+    {
+      "day_number": 19,
+      "period_end_utc": "2026-03-21T23:00:00Z",
+      "gold": 13760000.0,
+      "observed": true
+    },
+    {
+      "day_number": 20,
+      "period_end_utc": "2026-03-22T23:00:00Z",
+      "gold": 17812000.0,
+      "observed": true
+    },
+    {
+      "day_number": 21,
+      "period_end_utc": "2026-03-23T23:00:00Z",
+      "gold": 17343000.0,
+      "observed": true
+    },
+    {
+      "day_number": 22,
+      "period_end_utc": "2026-03-24T23:00:00Z",
+      "gold": 17293000.0,
+      "observed": true
+    },
+    {
+      "day_number": 23,
+      "period_end_utc": "2026-03-25T23:00:00Z",
+      "gold": null,
+      "observed": false
+    },
+    {
+      "day_number": 24,
+      "period_end_utc": "2026-03-26T23:00:00Z",
+      "gold": 19849000.0,
+      "observed": true
+    },
+    {
+      "day_number": 25,
+      "period_end_utc": "2026-03-27T23:00:00Z",
+      "gold": 20426000.0,
+      "observed": true
+    },
+    {
+      "day_number": 26,
+      "period_end_utc": "2026-03-28T23:00:00Z",
+      "gold": 20879000.0,
+      "observed": true
+    },
+    {
+      "day_number": 27,
+      "period_end_utc": "2026-03-29T23:00:00Z",
+      "gold": 21957000.0,
+      "observed": true
+    },
+    {
+      "day_number": 28,
+      "period_end_utc": "2026-03-30T23:00:00Z",
+      "gold": 24701000.0,
+      "observed": true
+    },
+    {
+      "day_number": 29,
+      "period_end_utc": "2026-03-31T23:00:00Z",
+      "gold": 24889000.0,
+      "observed": true
+    },
+    {
+      "day_number": 30,
+      "period_end_utc": "2026-04-01T23:00:00Z",
+      "gold": 26889000.0,
+      "observed": true
+    }
+  ],
+  "ongoing_daily": [
+    {
+      "day": "2026-08-11",
+      "gold_change": null
+    },
+    {
+      "day": "2026-08-12",
+      "gold_change": null
+    },
+    {
+      "day": "2026-08-13",
+      "gold_change": null
+    },
+    {
+      "day": "2026-08-14",
+      "gold_change": 3.04
+    },
+    {
+      "day": "2026-08-15",
+      "gold_change": 7501.5125
+    },
+    {
+      "day": "2026-08-16",
+      "gold_change": 4243.5583
+    },
+    {
+      "day": "2026-08-17",
+      "gold_change": null
+    },
+    {
+      "day": "2026-08-18",
+      "gold_change": null
+    },
+    {
+      "day": "2026-08-19",
+      "gold_change": 215281.9675
+    },
+    {
+      "day": "2026-08-20",
+      "gold_change": 97212.5303
+    },
+    {
+      "day": "2026-08-21",
+      "gold_change": 113142.9425
+    },
+    {
+      "day": "2026-08-22",
+      "gold_change": 236145.2378
+    },
+    {
+      "day": "2026-08-23",
+      "gold_change": 257147.6677
+    },
+    {
+      "day": "2026-08-24",
+      "gold_change": -3985.8767
+    },
+    {
+      "day": "2026-08-25",
+      "gold_change": 63607.9243
+    },
+    {
+      "day": "2026-08-26",
+      "gold_change": 247503.2389
+    },
+    {
+      "day": "2026-08-27",
+      "gold_change": 327930.453
+    },
+    {
+      "day": "2026-08-28",
+      "gold_change": 69640.4959
+    },
+    {
+      "day": "2026-08-29",
+      "gold_change": 447005.697
+    },
+    {
+      "day": "2026-08-30",
+      "gold_change": 257852.762
+    },
+    {
+      "day": "2026-08-31",
+      "gold_change": -145462.3481
+    },
+    {
+      "day": "2026-09-01",
+      "gold_change": 214032.8458
+    },
+    {
+      "day": "2026-09-02",
+      "gold_change": 86788.9884
+    },
+    {
+      "day": "2026-09-03",
+      "gold_change": 86248.991
+    },
+    {
+      "day": "2026-09-04",
+      "gold_change": 127119.3829
+    },
+    {
+      "day": "2026-09-05",
+      "gold_change": -31775.8589
+    },
+    {
+      "day": "2026-09-06",
+      "gold_change": null
+    },
+    {
+      "day": "2026-09-07",
+      "gold_change": null
+    },
+    {
+      "day": "2026-09-08",
+      "gold_change": 92741.6894
+    },
+    {
+      "day": "2026-09-09",
+      "gold_change": 229654.2112
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+/* The new projects share the existing SVG vocabulary: restrained colour,
+   open geometry and visible explanations. Figures are complete without JS. */
+.current-focus{--art-accent:#abd9bd;--art-rule:#364b40;--art-surface:#101814;--art-ink:#0c1911;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:24px 7%;padding-block:60px 64px}
+.current-focus-heading{grid-column:1;align-self:end}
+.current-focus-heading .eyebrow,.current-focus h2 em{color:var(--art-accent)}
+.current-focus-copy{grid-column:1;align-self:start}
+.current-focus-copy .status{border-color:var(--art-accent)}
+.grc-figure{grid-column:2;grid-row:1/3;align-self:center;background:radial-gradient(ellipse, #abd9bd08,transparent 68%)}
+.grc-figure figcaption{max-width:58ch}
+.art-stroke{stroke:var(--art-accent)}
+.art-fill{fill:var(--art-accent)}
+.art-rule{stroke:var(--art-rule)}
+.art-surface{fill:var(--art-surface)}
+.art-cutout{stroke:var(--art-ink)}
+.art-label{fill:var(--art-accent);font-size:18px}
+.art-small{fill:var(--muted);font-size:16px}
+.art-mobile-key{display:none}
+.wow-project{--art-accent:#e6c582;--art-rule:#514631;--art-surface:#17160f;--art-ink:#211b0e;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);align-items:center;gap:45px 7%;padding-block:70px 100px}
+.wow-copy .eyebrow{color:var(--art-accent)}
+.wow-copy h2{font-size:clamp(38px,4.3vw,58px)}
+.wow-copy h2 em{color:var(--art-accent)}
+.wow-copy>div{margin-top:28px;color:var(--muted);max-width:43ch}
+.wow-copy .status{font-size:14px}
+.wow-figure{background:radial-gradient(ellipse,#e6c58209,transparent 68%)}
+.gold-evidence{grid-column:1/-1;min-width:0;margin-top:35px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 48px;align-items:start}
+.gold-intro{grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;gap:18px}
+.gold-intro h3{font:400 clamp(32px,3.8vw,46px)/1.2 Georgia,serif;letter-spacing:-.035em}
+.gold-intro>p{font-size:14px;color:var(--muted)}
+.gold-chart{min-width:0}
+.gold-chart+.gold-chart{margin-top:0}
+.gold-chart-heading{display:flex;flex-direction:column;align-items:start;gap:18px}
+.gold-chart h4{margin:0;font-size:18px;font-weight:500;letter-spacing:-.01em}
+.gold-chart-heading p{margin-top:6px;font-size:13px;color:var(--muted)}
+.gold-chart-heading strong{color:var(--art-accent);font-size:28px;font-weight:500;letter-spacing:-.04em;white-space:nowrap;line-height:1.2;text-align:left}
+.gold-chart-heading strong span{display:block;color:var(--muted);font-size:12px;letter-spacing:0;font-weight:400;margin-top:6px}
+.gold-plot{margin-top:24px}
+.gold-plot:focus-visible,.gold-table-wrap:focus-visible{outline:2px solid var(--art-accent);outline-offset:5px}
+.gold-plot .chart-wide{display:none}
+.gold-plot .chart-compact{display:block}
+.chart-compact .chart-axis{font-size:16px}
+.chart-grid{stroke:var(--art-rule);stroke-dasharray:3 7;fill:none}
+.chart-axis{fill:var(--muted);font-size:15px}
+.chart-path{stroke:var(--art-accent);stroke-width:3;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.chart-point,.chart-positive{fill:var(--art-accent)}
+.chart-negative{fill:#b9a5d2}
+.chart-gap{stroke:var(--muted);stroke-width:2;fill:none}
+.chart-zero{stroke:var(--muted);stroke-width:1;fill:none}
+.chart-fill{fill:var(--art-accent);opacity:.055}
+.gold-chart figcaption{max-width:96ch;margin-top:16px;font-size:13px}
+.gold-key{display:flex;gap:22px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:12px}
+.gold-key span{display:inline-flex;align-items:center;gap:8px}
+.gold-key i{width:9px;height:9px;background:var(--art-accent);display:inline-block}
+.gold-key .negative{background:#b9a5d2}
+.gold-key .missing{background:transparent;border:1px solid var(--muted);border-radius:50%}
+.gold-table-wrap{max-height:350px;overflow:auto;margin-block:12px}
+.gold-table-wrap table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.gold-table-wrap th,.gold-table-wrap td{text-align:left;padding:9px 16px 9px 0;border-bottom:1px solid var(--art-rule)}
+.gold-table-wrap th{font-weight:500}
+.gold-table-wrap td:last-child{text-align:right;white-space:nowrap}
+.gold-source{grid-column:1/-1;color:var(--muted);font-size:12px;max-width:95ch;margin-top:0}
+html[data-palette] .current-focus,html[data-palette] .wow-project{--art-accent:var(--palette-three);--art-rule:var(--palette-rule-strong);--art-surface:var(--palette-surface);--art-ink:var(--palette-bg);--muted:var(--palette-muted)}
+html[data-palette] .current-focus{border-color:var(--palette-rule)}
+html[data-palette] .current-focus-copy{color:var(--palette-muted)}
+html[data-palette] .grc-figure,html[data-palette] .wow-figure{background:radial-gradient(ellipse,color-mix(in srgb,var(--art-accent) 5%,transparent),transparent 68%)}
+html[data-palette] .chart-negative{fill:var(--palette-four)}
+html[data-palette] .gold-key .negative{background:var(--palette-four)}
+@media(max-width:900px){.current-focus{gap:24px 5%}.current-focus h2{font-size:35px}.wow-project{grid-template-columns:1fr;gap:30px}.wow-copy>div{max-width:62ch}.wow-figure{max-width:700px;justify-self:center}.gold-evidence{margin-top:24px}}
+@media(max-width:700px){.current-focus{grid-template-columns:1fr;padding-block:38px 42px;gap:26px}.current-focus-heading,.current-focus-copy,.grc-figure{grid-column:1;grid-row:auto}.grc-figure{margin-top:0}.wow-project{padding-block:35px 65px}.wow-copy h2{font-size:clamp(36px,8.6vw,52px)}.gold-intro{display:block;margin-bottom:28px}.gold-intro>p{margin-top:8px}.gold-chart-heading{gap:16px;flex-wrap:wrap}.gold-chart-heading strong{text-align:left;font-size:25px}.gold-chart+.gold-chart{margin-top:46px}.gold-chart h4{font-size:17px}.gold-plot{margin-top:18px}.gold-plot:after{content:'Scroll to see the full chart â†’';display:block;font-size:12px;color:var(--muted);position:sticky;left:0;padding-top:6px}.gold-key{gap:12px 18px}.grc-figure figcaption,.wow-figure figcaption{font-size:13px}.art-mobile-key{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--art-accent);margin-top:12px}.grc-figure .art-label,.grc-figure .art-small{display:none}.grc-figure svg{margin-bottom:-30px}}
+@media(max-width:700px){.gold-plot .chart-wide,.gold-plot:after{display:none}.gold-plot .chart-compact{display:block}.chart-compact .chart-axis{font-size:24px}.wow-role-label{display:none}}
+@media print{.gold-plot:after{display:none}}
+@media(max-width:900px){.gold-evidence{grid-template-columns:minmax(0,1fr);row-gap:36px}.gold-intro{margin-bottom:0}.gold-chart+.gold-chart{margin-top:0}}
