@@ -11,18 +11,29 @@ const edgeCol = (f, pad = 3) => Math.ceil((f.extra.edge || 0) / f.cw) + pad;
 export function createField(canvas, opts = {}) {
   const o = { target: 5200, font: 'monospace', colors: () => ({ fg: [255, 179, 71], hi: [255, 226, 176] }), dim: null, ...opts };
   const cx = canvas.getContext('2d');
-  const s = { W: 0, H: 0, cols: 0, rows: 0, cell: 16, cw: 10, mouse: { x: -9999, y: -9999, on: false }, t0: performance.now(), mode: null, prev: null, data: o.data, extra: {} };
+  const s = { W: 0, H: 0, cols: 0, rows: 0, cell: 16, cw: 10, mouse: { x: -9999, y: -9999, on: false }, t0: performance.now(), mode: null, prev: null, data: o.data, extra: {}, visible: !o.lazy };
   const LEVELS = o.levels ?? 7, WIPE = 750;
   let last = 0, buckets = [], colors = o.colors(), running = false, pending = null, swapT = 0;
 
   function size() {
     const dpr = Math.min(devicePixelRatio || 1, 2);
+    if (o.fit) {
+      // A figure in the page: a fixed grid, with the canvas height following its width.
+      s.W = canvas.clientWidth;
+      if (!s.W) return;
+      s.cols = o.fit.cols; s.rows = o.fit.rows; s.cw = s.W / s.cols; s.cell = s.cw / 0.62; s.H = s.rows * s.cell;
+      canvas.style.height = `${s.H}px`;
+      canvas.width = s.W * dpr; canvas.height = s.H * dpr;
+      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cx.font = `${s.cell}px ${o.font}`;
+      cx.textBaseline = 'top';
+      return;
+    }
     s.W = canvas.clientWidth; s.H = canvas.clientHeight;
     canvas.width = s.W * dpr; canvas.height = s.H * dpr;
     cx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const dens = o.density?.[s.mode] ?? 1;
     s.cell = Math.max((s.W < 600 ? 12 : 14) / Math.sqrt(dens), Math.sqrt((s.W * s.H) / (0.62 * o.target * dens)));
-    if (o.minCols) s.cell = Math.min(s.cell, s.W / (o.minCols * 0.62));
     s.cw = s.cell * 0.62;
     s.cols = Math.ceil(s.W / s.cw); s.rows = Math.ceil(s.H / s.cell);
     cx.font = `${s.cell}px ${o.font}`;
@@ -47,6 +58,7 @@ export function createField(canvas, opts = {}) {
   const cut = (c, r) => (c / s.cols) * 0.55 + hash(c, r) * 0.45;
   function frame(t, force) {
     if (!reduce && running) requestAnimationFrame(frame);
+    if (!s.visible || !s.W) return;
     if (!force && t - last < 33) return;
     last = t;
     cx.clearRect(0, 0, s.W, s.H);
@@ -67,10 +79,17 @@ export function createField(canvas, opts = {}) {
   }
   if (o.pointer !== false) ['pointermove', 'pointerdown'].forEach((type) => addEventListener(type, (e) => {
     const r = canvas.getBoundingClientRect();
-    s.mouse = { x: e.clientX - r.left, y: e.clientY - r.top, on: true };
+    s.mouse = { x: e.clientX - r.left, y: e.clientY - r.top, on: !o.fit || (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) };
   }, { passive: true }));
   document.documentElement.addEventListener('pointerleave', () => (s.mouse.on = false));
   addEventListener('resize', () => { size(); if (reduce) frame(performance.now(), true); });
+  // A lazy field only draws while it is on screen, and starts its scene over when it comes into view.
+  if (o.lazy) new IntersectionObserver(([e]) => {
+    s.visible = e.isIntersecting;
+    if (!s.visible) return;
+    size(); s.t0 = performance.now();
+    if (reduce) frame(performance.now() + 9000, true);
+  }).observe(canvas);
   return {
     state: s,
     setMode(m) {
@@ -103,14 +122,14 @@ export const MODES = {
   lanes(f) {
     const { cols, rows, t, put, extra } = f, L = extra.lanes;
     if (!L?.seq) return;
-    // With no text column beside it (phones), the strip takes the full width and sits low, under the slider.
+    // With no text column beside it (a figure in the page), the strip takes the whole grid.
     const narrow = !(extra.edge > 0);
-    const g0 = narrow ? 1 : Math.max(edgeCol(f), Math.floor(cols * 0.5)), c0 = g0 + 9, c1 = cols - (narrow ? 2 : 4), span = c1 - c0;
+    const g0 = narrow ? 0 : Math.max(edgeCol(f), Math.floor(cols * 0.5)), c0 = g0 + 9, c1 = cols - (narrow ? 1 : 4), span = c1 - c0;
     if (span < 24) return;
     const seq = L.seq, total = seq.reduce((n, x) => n + x.dur, 0), secPerCol = 20 * 60 / span;
     const offset = (t / 1000) * 9, ph = c0 + Math.floor(span * 0.2);
     // Songs are wider than they are tall, so each lane reads as a track on a timeline.
-    const BH = 2, r0 = Math.round(rows * (narrow ? 0.74 : 0.5)) - BH - 4, bands = { a: r0 + 1, b: r0 + BH + 2 }, end = bands.b + BH;
+    const BH = 2, r0 = narrow ? 1 : Math.round(rows * 0.5) - BH - 4, bands = { a: r0 + 1, b: r0 + BH + 2 }, end = bands.b + BH;
     const inBand = (r) => (r >= bands.a && r < bands.a + BH) || (r >= bands.b && r < end);
     const pulse = L.pulse ? (t - L.pulse) / 900 : 9;
     for (let c = c0; c < c1; c++) {
@@ -422,7 +441,9 @@ export function createNexus() {
     draw(f) {
       const { cols, rows, cw, cell, t, mouse, put } = f;
       const bx = Math.max(edgeCol(f, 1), cols - 59 - 5), by = Math.max(4, Math.round((rows - 24) / 2));
-      n.lay = { bx, sr: by - 4, cy: by + 4, cw, cell };
+      // The two cards sit in the middle of the space the board would take.
+      const py = Math.max(by, Math.round((rows - CH - 4) / 2));
+      n.lay = { bx, sr: by - 4, cy: py + 4, cw, cell };
       if (n.starting && t - n.starting.t0 > 800) { n.at = n.starting.id; n.starting = null; }
       const h = mouse.on ? hit(mouse.x, mouse.y) : null;
       if (n.at) {
@@ -431,10 +452,10 @@ export function createNexus() {
         games[n.at].draw(f);
         return;
       }
-      text(put, 'tabletop nexus', bx, by, 1, true);
-      text(put, 'one game runs at a time', bx, by + 1, 0.45, false);
+      text(put, 'tabletop nexus', bx, py, 1, true);
+      text(put, 'one game runs at a time', bx, py + 1, 0.45, false);
       CARDS.forEach((card, i) => {
-        const x = bx + i * (CW + CG), y = by + 4, st = n.starting?.id === card.id, on = h === card.id && !n.starting;
+        const x = bx + i * (CW + CG), y = py + 4, st = n.starting?.id === card.id, on = h === card.id && !n.starting;
         const v = n.starting && !st ? 0.3 : 0.8;
         text(put, '+' + '-'.repeat(CW - 2) + '+', x, y, v, on || st);
         for (let k = 1; k < CH - 1; k++) { put('|', x, y + k, v, on || st); put('|', x + CW - 1, y + k, v, on || st); }

@@ -57,6 +57,7 @@
   .hero p { margin-top: 26px; max-width: 42ch; font-size: clamp(18px, 1.5vw, 22px); }
   .hero .scene { align-items: flex-end; }
   .mx-lanes { display: none; }
+  .stage { display: none; }
   .mx-slider input { accent-color: var(--a); }
   .gold-num { font: 700 clamp(56px, 6vw, 110px)/1 var(--display); color: var(--hi); letter-spacing: -.03em; }
   .scene-hint { font: 12px var(--display); color: var(--dim); margin-top: 18px; }
@@ -81,13 +82,16 @@
   @media (max-width: 340px) { .top nav a:first-child { display: none; } }
   @media (max-width: 900px) {
     body { touch-action: manipulation; }
-    .col { background: color-mix(in srgb, var(--bg) 90%, transparent); padding: 16px; border-radius: 10px; }
+    .col { background: color-mix(in srgb, var(--bg) 82%, transparent); padding: 16px; border-radius: 10px; }
     .hero .col { background: none; padding: 0; }
-    /* On phones the text scrolls away and leaves each scene a clear stage that takes taps. */
-    main > section:not(.hero) .scene { flex-direction: column; align-items: stretch; padding-bottom: 0; }
-    main > section:not(.hero) .scene::after { content: ''; flex: none; height: 80svh; }
-    main > section[data-mode="orbit"] .scene::after, main > section[data-mode="arrows"] .scene::after, main > section[data-mode="city3"] .scene::after { height: 55svh; }
+    /* On phones the interactive scenes sit in the page as figures, each sized to what it shows. */
+    .stage { display: block; width: 100%; }
+    .col .stage { margin-top: 20px; }
+    #wow .scene, #flip .scene { flex-direction: column; justify-content: center; align-items: stretch; gap: 22px; }
   }
+  /* A figure outside the text card gets its own quiet backing, so the background swell does not run through it. */
+  .scene > .stage { background: color-mix(in srgb, var(--bg) 94%, transparent); }
+  @media (max-width: 700px) { .scene > .stage { width: 100vw; margin-left: calc(50% - 50vw); } }
   .skip { position: absolute; top: -100px; left: 20px; z-index: 60; background: #fff; color: #000; padding: 12px; }
   .skip:focus { top: 12px; }
 </style>
@@ -122,6 +126,7 @@
       <p>I host salsa and bachata parties, and I wanted the music split by time on the dance floor. The mixer gives each genre a share of the listening time, with songs in runs: bachata in pairs, salsa in ones or twos.</p>
       <p>This autumn I corrected and tested the mixing logic and rebuilt the interface as a hardware-style console.</p>
       <figure id="mixer-ui"></figure>
+      <canvas class="stage" data-stage="lanes" aria-hidden="true"></canvas>
       <p class="fine">Simulated tracks between 3:00 and 4:30. Preset and code in the <a href="https://github.com/Defirion/spotify-playlist-mixer">public repository</a>. There is a <a href="https://spotify-mixer.netlify.app/">live app</a>, but Spotify only lets accounts on its allowlist sign in.</p>
     </div></div>
   </section>
@@ -134,7 +139,7 @@
       <p>I define the operating logic: which tool owns each action, and when incomplete data should stop an automated step.</p>
       <p class="gold-num" style="margin-top:26px">26.89M g</p>
       <p class="scene-hint">My gold over the first 30 days after the Midnight launch. Pick a column to read a day.</p>
-    </div></div>
+    </div><canvas class="stage" data-stage="gold" aria-hidden="true"></canvas></div>
   </section>
 
   <section id="flip" data-mode="tiles" data-color="#b7a3ef" aria-labelledby="flip-h">
@@ -143,7 +148,7 @@
       <p>Digital versions of tabletop games we own, played at home over the local network. Everyone joins from their phone by QR code; a TV can show the board but isn't needed.</p>
       <p>There are two games so far. Both run through <a href="https://github.com/Defirion/tabletop-nexus">Tabletop Nexus</a>, a portal I built that starts one game at a time behind a single address. The portal is public; the games stay private because the rules and art aren't mine to share.</p>
       <p>After family playtests I reworked the animations and icons so moves were easier to follow.</p>
-    </div></div>
+    </div><canvas class="stage" data-stage="tiles" aria-hidden="true"></canvas></div>
   </section>
 
   <section data-mode="arrows" data-color="#b2d8ef" aria-labelledby="lab-h">
@@ -184,12 +189,12 @@ const wide = () => innerWidth > 900;
 const textEdge = () => (wide() ? document.querySelector('.col').getBoundingClientRect().left + 600 : 0);
 let edge = 0;
 const field = createField(canvas, {
-  font: "'Kode Mono', monospace", data, target: 5600, levels: 16, minCols: 62, density: { city3: 4.2 },
+  font: "'Kode Mono', monospace", data, target: 5600, levels: 16, density: { city3: 4.2 },
   // The mix draws bachata in the highlight colour and salsa in the base colour; the skyline lights its windows amber.
   colors: () => mode === 'lanes' ? { fg: MIX.b, hi: MIX.a } : mode === 'city3' ? { fg: COOL, hi: AMBER }
     : { fg: cur, hi: mode === 'city' ? AMBER : cur.map((v) => Math.min(255, v + 50)) },
   // Keep the canvas quiet behind the text column.
-  dim: (x) => (!wide() ? (mode === 'waves' ? .32 : 1) : x < edge ? .14 : x < edge + 120 ? .14 + ((x - edge) / 120) * .86 : 1),
+  dim: (x) => (!wide() ? .32 : x < edge ? .14 : x < edge + 120 ? .14 + ((x - edge) / 120) * .86 : 1),
 });
 Object.assign(field.state.extra, { gold: { from: .46, to: .98, base: .8, height: .6 }, lanes: {}, flip: createNexus() });
 function tweenTo(hex) {
@@ -199,12 +204,18 @@ function tweenTo(hex) {
   const tick = (t) => { const k = Math.min(1, (t - t0) / 600); cur = from.map((v, i) => Math.round(v + (to[i] - v) * k)); field.refreshColors(); if (k < 1) requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
 }
+// On a phone the interactive scenes are figures in the page, so the background keeps a calm swell behind them.
+const INLINE = ['lanes', 'gold', 'tiles'];
 let active = null;
+function show() {
+  const m = active.dataset.mode;
+  mode = !wide() && INLINE.includes(m) ? 'calm' : m;
+  field.setMode(mode);
+}
 function enter(sec) {
   if (active === sec) return;
   active = sec;
-  mode = sec.dataset.mode;
-  field.setMode(mode);
+  show();
   tweenTo(sec.dataset.color);
 }
 const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && enter(e.target)), { rootMargin: '-45% 0px -45% 0px' });
@@ -227,20 +238,34 @@ animateLab(document.querySelector('#lab-fig .dg'), document.querySelector('.lab-
 
 // The portal behind the tabletop section takes clicks that land on empty page space.
 const game = field.state.extra.flip;
-const playable = (e) => mode === 'tiles' && !e.target.closest('a, button, input, .col, .top, .proto');
-addEventListener('click', (e) => { if (!playable(e) || !game.click(e.clientX, e.clientY)) return;
-  e.preventDefault();
-  // A finger leaves no pointer behind, so nothing should stay lit as if hovered.
-  if (e.pointerType === 'touch') field.state.mouse.on = false;
-  if (reduce) field.redraw();
-});
+const playable = (e) => mode === 'tiles' && wide() && !e.target.closest('a, button, input, .col, .top, .proto');
+addEventListener('click', (e) => { if (playable(e) && game.click(e.clientX, e.clientY)) { e.preventDefault(); if (reduce) field.redraw(); } });
 addEventListener('pointermove', (e) => { document.body.style.cursor = playable(e) && game.hit(e.clientX, e.clientY) != null ? 'pointer' : ''; }, { passive: true });
 
-// Beside the text on a wide screen; full width on a phone.
 const measure = () => {
   field.state.extra.edge = edge = textEdge();
-  Object.assign(field.state.extra.gold, wide() ? { from: .46, to: .98, base: .8, height: .6 } : { from: .05, to: .95, base: .72, height: .42 });
+  if (active) { show(); field.refreshColors(); }
 };
+
+// The same three scenes as figures in the page, for phones: the mix under its slider, the gold chart and the games.
+const FIT = { lanes: { cols: 44, rows: 12 }, gold: { cols: 48, rows: 22 }, tiles: { cols: 62, rows: 34 } };
+document.querySelectorAll('canvas.stage').forEach((cv) => {
+  const kind = cv.dataset.stage, hue = hexRgb(cv.closest('section').dataset.color);
+  const fig = createField(cv, {
+    font: "'Kode Mono', monospace", data, levels: 16, lazy: true, fit: FIT[kind],
+    colors: () => (kind === 'lanes' ? { fg: MIX.b, hi: MIX.a } : { fg: hue, hi: hue.map((v) => Math.min(255, v + 50)) }),
+  });
+  Object.assign(fig.state.extra, { lanes: field.state.extra.lanes, flip: game, gold: { from: .02, to: .98, base: .9, height: .82 } });
+  fig.setMode(kind);
+  document.fonts.ready.then(() => fig.start());
+  if (kind === 'tiles') cv.addEventListener('click', (e) => {
+    const r = cv.getBoundingClientRect();
+    if (!game.click(e.clientX - r.left, e.clientY - r.top)) return;
+    // A finger leaves no pointer behind, so nothing should stay lit as if hovered.
+    if (e.pointerType === 'touch') fig.state.mouse.on = false;
+    if (reduce) fig.redraw();
+  });
+});
 addEventListener('resize', measure);
 document.fonts.ready.then(() => { measure(); field.start(); });
 // Background: the pointer is a soft light over a still, isometric block of offices.
