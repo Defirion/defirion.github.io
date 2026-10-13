@@ -2,6 +2,7 @@
 // a compact two-colour mix, an office skyline and the expanded homelab diagram.
 import { MODES as S2_MODES, reduce } from './scenes.js';
 
+const TAP = matchMedia('(hover: none)').matches ? 'tap' : 'click';
 const hash = (c, r) => (((c * 73856093) ^ (r * 19349663)) >>> 0) % 1000 / 1000;
 const text = (put, s, c, r, v, hot) => [...s].forEach((ch, i) => put(ch, c + i, r, v, hot));
 const edgeCol = (f, pad = 3) => Math.ceil((f.extra.edge || 0) / f.cw) + pad;
@@ -21,6 +22,7 @@ export function createField(canvas, opts = {}) {
     cx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const dens = o.density?.[s.mode] ?? 1;
     s.cell = Math.max((s.W < 600 ? 12 : 14) / Math.sqrt(dens), Math.sqrt((s.W * s.H) / (0.62 * o.target * dens)));
+    if (o.minCols) s.cell = Math.min(s.cell, s.W / (o.minCols * 0.62));
     s.cw = s.cell * 0.62;
     s.cols = Math.ceil(s.W / s.cw); s.rows = Math.ceil(s.H / s.cell);
     cx.font = `${s.cell}px ${o.font}`;
@@ -63,10 +65,10 @@ export function createField(canvas, opts = {}) {
     }
     flush();
   }
-  if (o.pointer !== false) addEventListener('pointermove', (e) => {
+  if (o.pointer !== false) ['pointermove', 'pointerdown'].forEach((type) => addEventListener(type, (e) => {
     const r = canvas.getBoundingClientRect();
     s.mouse = { x: e.clientX - r.left, y: e.clientY - r.top, on: true };
-  }, { passive: true });
+  }, { passive: true }));
   document.documentElement.addEventListener('pointerleave', () => (s.mouse.on = false));
   addEventListener('resize', () => { size(); if (reduce) frame(performance.now(), true); });
   return {
@@ -101,12 +103,14 @@ export const MODES = {
   lanes(f) {
     const { cols, rows, t, put, extra } = f, L = extra.lanes;
     if (!L?.seq) return;
-    const g0 = Math.max(edgeCol(f), Math.floor(cols * 0.5)), c0 = g0 + 9, c1 = cols - 4, span = c1 - c0;
+    // With no text column beside it (phones), the strip takes the full width and sits low, under the slider.
+    const narrow = !(extra.edge > 0);
+    const g0 = narrow ? 1 : Math.max(edgeCol(f), Math.floor(cols * 0.5)), c0 = g0 + 9, c1 = cols - (narrow ? 2 : 4), span = c1 - c0;
     if (span < 24) return;
     const seq = L.seq, total = seq.reduce((n, x) => n + x.dur, 0), secPerCol = 20 * 60 / span;
     const offset = (t / 1000) * 9, ph = c0 + Math.floor(span * 0.2);
     // Songs are wider than they are tall, so each lane reads as a track on a timeline.
-    const BH = 2, r0 = Math.round(rows * 0.5) - BH - 4, bands = { a: r0 + 1, b: r0 + BH + 2 }, end = bands.b + BH;
+    const BH = 2, r0 = Math.round(rows * (narrow ? 0.74 : 0.5)) - BH - 4, bands = { a: r0 + 1, b: r0 + BH + 2 }, end = bands.b + BH;
     const inBand = (r) => (r >= bands.a && r < bands.a + BH) || (r >= bands.b && r < end);
     const pulse = L.pulse ? (t - L.pulse) / 900 : 9;
     for (let c = c0; c < c1; c++) {
@@ -304,8 +308,8 @@ export function createFlipGame() {
       const sy = by + bh + 1;
       text(put, `${g.coins} coin${g.coins === 1 ? '' : 's'}${g.map ? ' · map' : ''}`, bx, sy, 1, true);
       if (g.msg) text(put, g.msg.slice(0, bw), bx, sy + 1, 0.7, false);
-      const hint = g.over ? `final: ${g.coins} coins${g.over.sunk ? ', but 3 gunners cannot win' : ''}. click to deal again`
-        : g.hand?.flipped ? 'flipped. now pick a column' : 'click the tile to flip it, or a column to place it';
+      const hint = g.over ? `final: ${g.coins} coins${g.over.sunk ? ', but 3 gunners cannot win' : ''}. ${TAP} to deal again`
+        : g.hand?.flipped ? 'flipped. now pick a column' : `${TAP} the tile to flip it, or a column to place it`;
       text(put, hint.slice(0, bw), bx, sy + 2, 0.45, g.over != null);
     },
   };
@@ -383,7 +387,7 @@ export function createDiceGame() {
         text(put, fire, bx, ry, n >= 2 ? 1 : 0.35, n >= 2 && h === 'fire');
         text(put, bank, bankX, ry, 1, h === 'bank');
       }
-      text(put, g.end ? 'click to roll again' : 'pick two or more dice to fire again, or bank', bx, ry + 2, 0.45, g.end != null);
+      text(put, g.end ? `${TAP} to roll again` : 'pick two or more dice to fire again, or bank', bx, ry + 2, 0.45, g.end != null);
       text(put, `total ${g.total}`, bx, ry + 4, 0.7, false);
     },
   };

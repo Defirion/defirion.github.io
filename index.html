@@ -79,7 +79,15 @@
   /* Keep the docked name and the nav apart on narrow phones. */
   @media (max-width: 380px) { .top nav { gap: 10px; font-size: 11px; } }
   @media (max-width: 340px) { .top nav a:first-child { display: none; } }
-  @media (max-width: 900px) { .col { background: color-mix(in srgb, var(--bg) 82%, transparent); padding: 16px; border-radius: 10px; } .hero .col { background: none; padding: 0; } }
+  @media (max-width: 900px) {
+    body { touch-action: manipulation; }
+    .col { background: color-mix(in srgb, var(--bg) 90%, transparent); padding: 16px; border-radius: 10px; }
+    .hero .col { background: none; padding: 0; }
+    /* On phones the text scrolls away and leaves each scene a clear stage that takes taps. */
+    main > section:not(.hero) .scene { flex-direction: column; align-items: stretch; padding-bottom: 0; }
+    main > section:not(.hero) .scene::after { content: ''; flex: none; height: 80svh; }
+    main > section[data-mode="orbit"] .scene::after, main > section[data-mode="arrows"] .scene::after, main > section[data-mode="city3"] .scene::after { height: 55svh; }
+  }
   .skip { position: absolute; top: -100px; left: 20px; z-index: 60; background: #fff; color: #000; padding: 12px; }
   .skip:focus { top: 12px; }
 </style>
@@ -125,7 +133,7 @@
       <p>A sister set does the same job for Forever. There every item is followed to its sale, so projected gold per hour can be checked against what it really earned. A graph will be added when it launches.</p>
       <p>I define the operating logic: which tool owns each action, and when incomplete data should stop an automated step.</p>
       <p class="gold-num" style="margin-top:26px">26.89M g</p>
-      <p class="scene-hint">My gold over the first 30 days after the Midnight launch. Hover a column to read a day.</p>
+      <p class="scene-hint">My gold over the first 30 days after the Midnight launch. Pick a column to read a day.</p>
     </div></div>
   </section>
 
@@ -144,7 +152,7 @@
       <p>A small Proxmox host. OPNsense is the firewall and router, so everything from outside passes through it, and AdGuard filters DNS. A Debian VM runs Docker for my own services, like a panel that runs the bedroom AC on a schedule.</p>
       <p>I'm reworking it, on paper first, with an inventory, a network map and a change log: separate network segments, alerting, intrusion detection, and a message bus the services share.</p>
       <figure id="lab-fig" style="max-width:560px"></figure>
-      <p class="fine lab-cap">Dashed boxes are planned. Hover a box for what it does.</p>
+      <p class="fine lab-cap">Dashed boxes are planned. Pick a box for what it does.</p>
     </div></div>
   </section>
 
@@ -176,12 +184,12 @@ const wide = () => innerWidth > 900;
 const textEdge = () => (wide() ? document.querySelector('.col').getBoundingClientRect().left + 600 : 0);
 let edge = 0;
 const field = createField(canvas, {
-  font: "'Kode Mono', monospace", data, target: 5600, levels: 16, density: { city3: 4.2 },
+  font: "'Kode Mono', monospace", data, target: 5600, levels: 16, minCols: 62, density: { city3: 4.2 },
   // The mix draws bachata in the highlight colour and salsa in the base colour; the skyline lights its windows amber.
   colors: () => mode === 'lanes' ? { fg: MIX.b, hi: MIX.a } : mode === 'city3' ? { fg: COOL, hi: AMBER }
     : { fg: cur, hi: mode === 'city' ? AMBER : cur.map((v) => Math.min(255, v + 50)) },
   // Keep the canvas quiet behind the text column.
-  dim: (x) => (!wide() ? .32 : x < edge ? .14 : x < edge + 120 ? .14 + ((x - edge) / 120) * .86 : 1),
+  dim: (x) => (!wide() ? (mode === 'waves' ? .32 : 1) : x < edge ? .14 : x < edge + 120 ? .14 + ((x - edge) / 120) * .86 : 1),
 });
 Object.assign(field.state.extra, { gold: { from: .46, to: .98, base: .8, height: .6 }, lanes: {}, flip: createNexus() });
 function tweenTo(hex) {
@@ -219,11 +227,20 @@ animateLab(document.querySelector('#lab-fig .dg'), document.querySelector('.lab-
 
 // The portal behind the tabletop section takes clicks that land on empty page space.
 const game = field.state.extra.flip;
-const playable = (e) => mode === 'tiles' && wide() && !e.target.closest('a, button, input, .col, .top, .proto');
-addEventListener('click', (e) => { if (playable(e) && game.click(e.clientX, e.clientY)) { e.preventDefault(); if (reduce) field.redraw(); } });
+const playable = (e) => mode === 'tiles' && !e.target.closest('a, button, input, .col, .top, .proto');
+addEventListener('click', (e) => { if (!playable(e) || !game.click(e.clientX, e.clientY)) return;
+  e.preventDefault();
+  // A finger leaves no pointer behind, so nothing should stay lit as if hovered.
+  if (e.pointerType === 'touch') field.state.mouse.on = false;
+  if (reduce) field.redraw();
+});
 addEventListener('pointermove', (e) => { document.body.style.cursor = playable(e) && game.hit(e.clientX, e.clientY) != null ? 'pointer' : ''; }, { passive: true });
 
-const measure = () => (field.state.extra.edge = edge = textEdge());
+// Beside the text on a wide screen; full width on a phone.
+const measure = () => {
+  field.state.extra.edge = edge = textEdge();
+  Object.assign(field.state.extra.gold, wide() ? { from: .46, to: .98, base: .8, height: .6 } : { from: .05, to: .95, base: .72, height: .42 });
+};
 addEventListener('resize', measure);
 document.fonts.ready.then(() => { measure(); field.start(); });
 // Background: the pointer is a soft light over a still, isometric block of offices.
