@@ -369,7 +369,9 @@ export function createDiceGame() {
     if (c >= L.bx && c < L.bx + L.fire) return 'fire';
     return c >= L.bankX && c < L.bankX + L.bank ? 'bank' : null;
   }
-  deal();
+  // The dice wait blank until the first roll.
+  g.dice = Array.from({ length: 8 }, () => ({ face: '', pick: false, until: 0 }));
+  g.end = 'ready';
   return {
     click(x, y) {
       if (rolling(performance.now())) return true;
@@ -391,7 +393,7 @@ export function createDiceGame() {
       g.dice.forEach((d, i) => {
         const x = bx + (i % 4) * (DW + DGX), y = dy + (i >> 2) * (DH + DGY), spin = t < d.until;
         const face = spin ? SIDES[Math.floor(hash(i + (t >> 6), i) * 6)] : d.face, skull = !spin && d.face === 'skull';
-        const v = spin ? 0.6 : skull ? 0.4 : d.pick ? 0.55 : 0.9, hot = !spin && !skull && (d.pick || h === i);
+        const v = spin ? 0.6 : skull ? 0.4 : d.pick || !d.face ? 0.55 : 0.9, hot = !spin && !skull && (d.pick || h === i);
         text(put, '+' + '-'.repeat(DW - 2) + '+', x, y, v, hot);
         for (let k = 1; k < DH - 1; k++) { put('|', x, y + k, v, hot); put('|', x + DW - 1, y + k, v, hot); }
         text(put, center(face, DW - 2), x + 1, y + (DH >> 1), v, hot);
@@ -399,14 +401,14 @@ export function createDiceGame() {
         if (d.pick && !spin) put('↻', x + DW - 2, y, 1, true);
       });
       if (busy) return;
-      const sk = skulls(), status = g.end === 'sunk' ? 'three skulls. the roll is lost' : g.end === 'banked' ? `banked ${g.last}`
+      const sk = skulls(), status = g.end === 'ready' ? '' : g.end === 'sunk' ? 'three skulls. the roll is lost' : g.end === 'banked' ? `banked ${g.last}`
         : `${sk} skull${sk === 1 ? '' : 's'} · ${pts} on the table`;
       text(put, status, bx, ry - 2, 1, g.end !== 'sunk');
       if (!g.end) {
         text(put, fire, bx, ry, n >= 2 ? 1 : 0.35, n >= 2 && h === 'fire');
         text(put, bank, bankX, ry, 1, h === 'bank');
       }
-      text(put, g.end ? `${TAP} to roll again` : 'pick two or more dice to fire again, or bank', bx, ry + 2, 0.45, g.end != null);
+      text(put, g.end === 'ready' ? `${TAP} to roll` : g.end ? `${TAP} to roll again` : 'pick two or more dice to fire again, or bank', bx, ry + 2, 0.45, g.end != null);
       text(put, `total ${g.total}`, bx, ry + 4, 0.7, false);
     },
   };
